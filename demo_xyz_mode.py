@@ -6,9 +6,17 @@ import matplotlib.pyplot as plt
 from sfs import psf_shifting
 
 
-# load psf stacks
-all_psfs = sio.loadmat('./Data/psf_stacks.mat')['psf_stacks']
-all_psfs = all_psfs.astype(dtype=np.double)
+# load psf stacks, 4 pieces, The data division is for storage and uploading.
+psfs_1 = sio.loadmat('./Data/psf_stacks_1.mat')['psf_stacks_1']
+psfs_1 = psfs_1.astype(dtype=np.double)
+psfs_2 = sio.loadmat('./Data/psf_stacks_2.mat')['psf_stacks_2']
+psfs_2 = psfs_2.astype(dtype=np.double)
+psfs_3 = sio.loadmat('./Data/psf_stacks_3.mat')['psf_stacks_3']
+psfs_3 = psfs_3.astype(dtype=np.double)
+psfs_4 = sio.loadmat('./Data/psf_stacks_4.mat')['psf_stacks_4']
+psfs_4 = psfs_4.astype(dtype=np.double)
+all_psfs = np.concatenate((psfs_1, psfs_2, psfs_3, psfs_4), axis=1)
+
 
 # load xy_pos and z_pos
 xy_pos = sio.loadmat('./Data/xy_pos.mat')['xy_pos'].astype(np.double)  # um
